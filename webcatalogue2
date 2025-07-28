@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zoom Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .gallery a img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 8px;
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100vh;
+      border-radius: 10px;
+    }
+
+    .close, .prev, .next {
+      position: absolute;
+      top: 20px;
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .close { right: 20px; }
+    .prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+    @media (max-width: 480px) {
+      .gallery a img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="gallery">
+  <a href="#img1"><img src="FG1.jpg" alt="Image 1"></a>
+  <a href="#img2"><img src="FG2.jpg" alt="Image 2"></a>
+  <a href="#img3"><img src="FG3.jpg" alt="Image 3"></a>
+  <a href="#img4"><img src="FG4.jpg" alt="Image 4"></a>
+  <a href="#img5"><img src="FG5.jpg" alt="Image 5"></a>
+</div>
+
+<!-- Lightboxes -->
+<div class="lightbox" id="img1">
+  <a href="#FG5" class="prev">&#10094;</a>
+  <img src="FG1.jpg" alt="Image 1">
+  <a href="#FG2" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img2">
+  <a href="#FG1" class="prev">&#10094;</a>
+  <img src="FG2.jpg" alt="Image 2">
+  <a href="#FG3" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img3">
+  <a href="#img2" class="prev">&#10094;</a>
+  <img src="img3.jpg" alt="Image 3">
+  <a href="#img4" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img4">
+  <a href="#FG3" class="prev">&#10094;</a>
+  <img src="FG4.jpg" alt="Image 4">
+  <a href="#FG5" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img5">
+  <a href="#FG4" class="prev">&#10094;</a>
+  <img src="FG5.jpg" alt="Image 5">
+  <a href="#FG1" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+</body>
+</html>
